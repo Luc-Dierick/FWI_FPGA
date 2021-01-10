@@ -9,6 +9,8 @@
 #include <complex>
 
 #define DIM 84
+#define SIZE (DIM * DIM)
+
 
 typedef std::complex<float> din_t;
 typedef float din2_t;

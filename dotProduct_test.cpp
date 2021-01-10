@@ -1,8 +1,6 @@
 #include "dotProduct.h"
-#define SIZE (DIM * DIM)
 
-
-void mmult_84(hls::stream<din_t> &in, hls::stream<din2_t> &in2, hls::stream<data_struct<dout_t> > &out);
+void dotprod(hls::stream<din_t> &in, hls::stream<din2_t> &in2, hls::stream<data_struct<dout_t> > &out);
 
 void mmult_sw(std::complex<float> a[DIM][DIM], float b[DIM], std::complex<float> out[DIM]) {
     // dot product of vector and matrix A*B
@@ -49,7 +47,7 @@ int main(void)
         in2.write(matOp2[i]);
 
     /* HW Matrix Multiplication */
-    mmult_84(in, in2, out);
+    dotprod(in, in2, out);
 
     // Write Output
     for(i = 0; i<DIM; i++)

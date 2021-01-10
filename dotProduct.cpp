@@ -1,9 +1,9 @@
 #include "dotProduct.h"
 
-void mmult_84(hls::stream<din_t> &s_in, hls::stream<din2_t> &s2_in, hls::stream<data_struct<dout_t> > &s_out) {
-#pragma HLS INTERFACE axis port=s_in
-#pragma HLS INTERFACE axis port=s2_in
-#pragma HLS INTERFACE axis port=s_out
+void dotprod(hls::stream<din_t> &dotprod_in_matrix, hls::stream<din2_t> &dotprod_in_vector, hls::stream<data_struct<dout_t> > &dotprod_out) {
+#pragma HLS INTERFACE axis port=dotprod_in_matrix
+#pragma HLS INTERFACE axis port=dotprod_in_vector
+#pragma HLS INTERFACE axis port=dotprod_out
 #pragma HLS INTERFACE ap_ctrl_none port=return
 
 
@@ -19,14 +19,14 @@ void mmult_84(hls::stream<din_t> &s_in, hls::stream<din2_t> &s2_in, hls::stream<
     for (int i = 0; i < DIM; i++)
         for (int j = 0; j < DIM; j++) {
 #pragma HLS PIPELINE II=1
-            a[i][j] = s_in.read();
+            a[i][j] = dotprod_in_matrix.read();
 
         }
 
     // stream in the vector
     for (int i = 0; i < DIM; i++){
 #pragma HLS PIPELINE II=1
-        b[i] = s2_in.read();
+        b[i] = dotprod_in_vector.read();
     }
 
     // dot product of matrix A and vector B
@@ -49,7 +49,7 @@ void mmult_84(hls::stream<din_t> &s_in, hls::stream<din2_t> &s2_in, hls::stream<
         out_data.data = c[i];
         out_data.last = (i == (DIM - 1)) ? 1 : 0;
 
-        s_out.write(out_data);
+        dotprod_out.write(out_data);
     }
 
     return;
