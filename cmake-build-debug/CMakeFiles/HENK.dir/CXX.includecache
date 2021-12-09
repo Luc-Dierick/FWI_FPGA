@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Luc/CLionProjects/FWI/dotProduct.cpp
+dotProduct.h
+C:/Users/Luc/CLionProjects/FWI/dotProduct.h
+
+C:/Users/Luc/CLionProjects/FWI/dotProduct.h
+vector
+-
+
