@@ -6,22 +6,30 @@
 
 using namespace std;
 
-int main(){
+int main() {
+    double A[MAGNITUDE][GRIDPOINTS];
+    double B[GRIDPOINTS];
+    double out[MAGNITUDE];
 
-    double A[N];
-    double B[N];
-    for(int i = 0; i < N; i++){
-        A[i] = i;
-        B[i] = i+1;
+    for (int i = 0; i < GRIDPOINTS; i++) {
+        B[i] = i;
+        for (int j = 0; j < MAGNITUDE; j++) {
+            A[j][i] = i * j;
+        }
     }
 
-    double out;
-    dotProd(A,B, out);
+    for(double &i : out){
+    	i = 0;
+    }
 
-    if(out==333300){
-    	std::cout << "Test passed! product is: " << out << std::endl;
-    }else{
-    	std::cout << "Test Failed!! product is: " << out  << std::endl;
+    dotProd(A, B, out);
+
+    std::cout << "OUT[1] is: " << out[1] << std::endl;
+
+    if (out[1] == 285) {
+        std::cout << "Test passed! product is: " << out[1] << std::endl;
+    } else {
+        std::cout << "Test Failed!! product is: " << out[1] << "and should be: 285" << std::endl;
     }
 
     return 0;

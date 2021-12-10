@@ -169,33 +169,6 @@ dotProduct.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FWI.dir\build.make CMakeFiles/FWI.dir/dotProduct.cpp.s
 .PHONY : dotProduct.cpp.s
 
-dotProduct_test.obj: dotProduct_test.cpp.obj
-
-.PHONY : dotProduct_test.obj
-
-# target to build an object file
-dotProduct_test.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FWI.dir\build.make CMakeFiles/FWI.dir/dotProduct_test.cpp.obj
-.PHONY : dotProduct_test.cpp.obj
-
-dotProduct_test.i: dotProduct_test.cpp.i
-
-.PHONY : dotProduct_test.i
-
-# target to preprocess a source file
-dotProduct_test.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FWI.dir\build.make CMakeFiles/FWI.dir/dotProduct_test.cpp.i
-.PHONY : dotProduct_test.cpp.i
-
-dotProduct_test.s: dotProduct_test.cpp.s
-
-.PHONY : dotProduct_test.s
-
-# target to generate assembly for a file
-dotProduct_test.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FWI.dir\build.make CMakeFiles/FWI.dir/dotProduct_test.cpp.s
-.PHONY : dotProduct_test.cpp.s
-
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -235,9 +208,6 @@ help:
 	@echo ... dotProduct.obj
 	@echo ... dotProduct.i
 	@echo ... dotProduct.s
-	@echo ... dotProduct_test.obj
-	@echo ... dotProduct_test.i
-	@echo ... dotProduct_test.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

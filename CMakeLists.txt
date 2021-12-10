@@ -8,8 +8,8 @@ set(PROJECT_HEADERS
         dotProduct.h
         )
 set(PROJECT_SOURCES
-        dotProduct.cpp
         main.cpp
-        dotProduct_test.cpp)
+        dotProduct.cpp
+        )
 
 add_executable(FWI ${PROJECT_SOURCES} ${PROJECT_HEADERS})

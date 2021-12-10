@@ -6,9 +6,12 @@
 #define FWI_DOTPRODUCT_H
 
 #define N 100
+#define MAGNITUDE 10 //17*15*15
+#define GRIDPOINTS 10
 
-void dotProd(double A[N], double B[N], double &out);
+#include <complex>
 
+void dotProd(double A[MAGNITUDE][GRIDPOINTS], double B[MAGNITUDE], double out[MAGNITUDE]);
 
 
 #endif //FWI_DOTPRODUCT_H

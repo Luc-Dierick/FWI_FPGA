@@ -4,30 +4,31 @@
 
 #include "dotProduct.h"
 
-void dotProd(double A[N], double B[N], double &out) {
+void dotProd(double A[MAGNITUDE][GRIDPOINTS], double B[GRIDPOINTS], double out[MAGNITUDE]) {
 
-	double A_db[N],B_db[N];
+	double A_db[MAGNITUDE][GRIDPOINTS],B_db[N];
 
-	#pragma HLS array_partition  variable=A_db dim=1 complete
+	#pragma HLS array_partition  variable=A_db dim=2 complete
 	#pragma HLS array_partition  variable=B_db dim=1 complete
 
-	double product = 0;
 
-	LOOP_A:for(int i=0; i<N; i++){
-	#pragma HLS PIPELINE
-		A_db[i] = A[i];
+	LOOP_A_I:for(int i=0; i<MAGNITUDE; i++){
+	    LOOP_A_J:for(int j=0; j <GRIDPOINTS;j++){
+            #pragma HLS PIPELINE
+	        A_db[i][j] = A[i][j];
+	    }
 	}
 
-	LOOP_B:for(int i=0; i<N; i++){
-	#pragma HLS PIPELINE
-			B_db[i] = B[i];
+	LOOP_B:for(int i=0; i<GRIDPOINTS; i++){
+	    #pragma HLS PIPELINE
+		B_db[i] = B[i];
 	}
 
-	LOOP_PROD:for(int i=0;i<N;i++) {
-#pragma HLS UNROLL
-		product = product + A_db[i]*B_db[i];
+	LOOP_PROD:for(int i=0;i<MAGNITUDE;i++) {
+	    for(int j = 0; j < GRIDPOINTS; j++){
+            #pragma HLS UNROLL
+            out[i] += A_db[i][j]*B_db[j];
+	    }
 	}
-
-	out =  product;
 
 }
