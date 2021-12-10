@@ -4,14 +4,14 @@
 
 #include "dotProduct.h"
 
-void dotProd(double A[MAGNITUDE][GRIDPOINTS], double B[GRIDPOINTS], double out[MAGNITUDE]) {
+void dotProd(std::complex<double> A[MAGNITUDE][GRIDPOINTS], double B[GRIDPOINTS], std::complex<double> out[MAGNITUDE]) {
 
-	double A_db[MAGNITUDE][GRIDPOINTS],B_db[N];
+	std::complex<double> A_db[MAGNITUDE][GRIDPOINTS];
+	double B_db[GRIDPOINTS];
 
 	#pragma HLS array_partition  variable=A_db dim=2 complete
 	#pragma HLS array_partition  variable=B_db dim=1 complete
-
-
+    
 	LOOP_A_I:for(int i=0; i<MAGNITUDE; i++){
 	    LOOP_A_J:for(int j=0; j <GRIDPOINTS;j++){
             #pragma HLS PIPELINE
@@ -24,9 +24,9 @@ void dotProd(double A[MAGNITUDE][GRIDPOINTS], double B[GRIDPOINTS], double out[M
 		B_db[i] = B[i];
 	}
 
-	LOOP_PROD:for(int i=0;i<MAGNITUDE;i++) {
+ 	LOOP_PROD:for(int i=0;i<MAGNITUDE;i++) {
 	    for(int j = 0; j < GRIDPOINTS; j++){
-            #pragma HLS UNROLL
+		#pragma HLS PIPELINE
             out[i] += A_db[i][j]*B_db[j];
 	    }
 	}

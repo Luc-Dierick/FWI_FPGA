@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/FWI.dir/dotProduct.cpp.obj"
+  "CMakeFiles/FWI.dir/dotProduct.cpp.obj.d"
   "CMakeFiles/FWI.dir/main.cpp.obj"
+  "CMakeFiles/FWI.dir/main.cpp.obj.d"
   "FWI.exe"
   "FWI.exe.manifest"
   "FWI.pdb"
