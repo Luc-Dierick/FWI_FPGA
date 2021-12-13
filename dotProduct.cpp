@@ -4,10 +4,10 @@
 
 #include "dotProduct.h"
 
-void dotProd(double A[MAGNITUDE][GRIDPOINTS], double B[GRIDPOINTS], double out[MAGNITUDE]) {
+void dotProd(int A[MAGNITUDE][GRIDPOINTS], int B[GRIDPOINTS], int out[MAGNITUDE]) {
 
-	double A_db[MAGNITUDE][GRIDPOINTS];
-	double B_db[GRIDPOINTS];
+	int A_db[MAGNITUDE][GRIDPOINTS];
+	int B_db[GRIDPOINTS];
 
 	#pragma HLS array_partition  variable=A_db dim=2 complete
 	#pragma HLS array_partition  variable=B_db dim=1 complete

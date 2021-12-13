@@ -3,9 +3,9 @@
 
 int main() {
 
-    double A[MAGNITUDE][GRIDPOINTS];
-    double B[GRIDPOINTS];
-    double out[MAGNITUDE];
+    int A[MAGNITUDE][GRIDPOINTS];
+    int B[GRIDPOINTS];
+    int out[MAGNITUDE];
 
     for (int i = 0; i < GRIDPOINTS; i++) {
         B[i] = i;
@@ -14,7 +14,7 @@ int main() {
         }
     }
 
-    for (double & i : out) {
+    for (int & i : out) {
         i = 0;
     }
 
