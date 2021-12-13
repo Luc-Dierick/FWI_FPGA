@@ -9,8 +9,7 @@
 #define MAGNITUDE 10 //17*15*15
 #define GRIDPOINTS 10
 
-#include <complex>
-void dotProd(std::complex<double> A[MAGNITUDE][GRIDPOINTS], double B[MAGNITUDE], std::complex<double> out[MAGNITUDE]);
+void dotProd(double A[MAGNITUDE][GRIDPOINTS], double B[MAGNITUDE], double out[MAGNITUDE]);
 
 
 #endif //FWI_DOTPRODUCT_H

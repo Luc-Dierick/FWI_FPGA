@@ -4,9 +4,9 @@
 
 #include "dotProduct.h"
 
-void dotProd(std::complex<double> A[MAGNITUDE][GRIDPOINTS], double B[GRIDPOINTS], std::complex<double> out[MAGNITUDE]) {
+void dotProd(double A[MAGNITUDE][GRIDPOINTS], double B[GRIDPOINTS], double out[MAGNITUDE]) {
 
-	std::complex<double> A_db[MAGNITUDE][GRIDPOINTS];
+	double A_db[MAGNITUDE][GRIDPOINTS];
 	double B_db[GRIDPOINTS];
 
 	#pragma HLS array_partition  variable=A_db dim=2 complete
