@@ -10,7 +10,7 @@ int main() {
     for (int i = 0; i < GRIDPOINTS; i++) {
         B[i] = i;
         for (int j = 0; j < MAGNITUDE; j++) {
-            A[j][i] = {i*1.0, j*1.0};
+            A[j][i] = {i*1.0f, j*1.0f};
         }
     }
 

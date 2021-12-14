@@ -10,6 +10,7 @@
 #define GRIDPOINTS 10
 
 #include <complex>
+
 void dotProd(std::complex<double> A[MAGNITUDE][GRIDPOINTS], double B[MAGNITUDE], std::complex<double> out[MAGNITUDE]);
 
 
