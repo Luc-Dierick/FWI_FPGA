@@ -1,17 +1,16 @@
-//
-// Created by Luc on 09/12/2021.
-//
+#include <hls_stream.h>
+#include <ap_fixed.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-#ifndef FWI_DOTPRODUCT_H
-#define FWI_DOTPRODUCT_H
+#define DIM 84
 
-#define N 100
-#define MAGNITUDE 10 //17*15*15
-#define GRIDPOINTS 10
+typedef float din_t;
+typedef float dout_t;
 
-#include <complex>
-
-void dotProd(std::complex<double> A[MAGNITUDE][GRIDPOINTS], double B[MAGNITUDE], std::complex<double> out[MAGNITUDE]);
-
-
-#endif //FWI_DOTPRODUCT_H
+template<typename T>
+class data_struct{
+public:
+    T data;
+    ap_uint<1> last;
+};

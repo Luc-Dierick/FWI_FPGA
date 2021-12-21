@@ -86,9 +86,6 @@
 		<Unit filename="C:/Users/Luc/CLionProjects/FWI/dotProduct.h">
 			<Option target="FWI"/>
 		</Unit>
-		<Unit filename="C:/Users/Luc/CLionProjects/FWI/main.cpp">
-			<Option target="FWI"/>
-		</Unit>
 		<Unit filename="C:/Users/Luc/CLionProjects/FWI/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

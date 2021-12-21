@@ -8,7 +8,6 @@ set(PROJECT_HEADERS
         dotProduct.h
         )
 set(PROJECT_SOURCES
-        main.cpp
         dotProduct.cpp
         )
 
