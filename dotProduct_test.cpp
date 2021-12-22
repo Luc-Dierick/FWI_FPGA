@@ -64,9 +64,9 @@ int main(void)
         if (matMult_sw[i] != matMult_hw[i]){
             err++;
         }else{
-//            std::cout << matMult_hw[i]  << std::endl;
 //            std::cout << matOp1[i][i] <<std::endl;
         }
+    std::cout << matMult_hw[3]  << std::endl;
     if (err == 0)
         printf("Matrixes identical ... Test successful!\r\n");
     else
