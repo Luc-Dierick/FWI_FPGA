@@ -1,15 +1,15 @@
 #include "dotProduct.h"
 
-void mmult_84(hls::stream<din_t> &s_in, hls::stream<din_t> &s2_in, hls::stream<data_struct<dout_t> > &s_out) {
+void mmult_84(hls::stream<din_t> &s_in, hls::stream<din2_t> &s2_in, hls::stream<data_struct<dout_t> > &s_out) {
 #pragma HLS INTERFACE axis port=s_in
 #pragma HLS INTERFACE axis port=s2_in
 #pragma HLS INTERFACE axis port=s_out
 #pragma HLS INTERFACE ap_ctrl_none port=return
 
 
-    float a[DIM][DIM];
+    static din_t a[DIM][DIM];
     float b[DIM];
-    float c[DIM];
+    static din_t c[DIM];
 
     int const FACTOR = DIM/4;
 #pragma HLS array_partition variable=a block factor=FACTOR dim=2
@@ -30,7 +30,7 @@ void mmult_84(hls::stream<din_t> &s_in, hls::stream<din_t> &s2_in, hls::stream<d
     }
 
     // dot product of matrix A and vector B
-    float sum = 0;
+    std::complex<float> sum = 0;
     L1:for (int ia = 0; ia < DIM; ++ia){
     L2:for (int ib = 0; ib < DIM; ++ib)
 {

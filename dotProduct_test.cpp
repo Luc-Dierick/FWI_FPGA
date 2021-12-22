@@ -2,9 +2,9 @@
 #define SIZE (DIM * DIM)
 
 
-void mmult_84(hls::stream<din_t> &in, hls::stream<din_t> &in2, hls::stream<data_struct<dout_t> > &out);
+void mmult_84(hls::stream<din_t> &in, hls::stream<din2_t> &in2, hls::stream<data_struct<dout_t> > &out);
 
-void mmult_sw(float a[DIM][DIM], float b[DIM], float out[DIM]) {
+void mmult_sw(std::complex<float> a[DIM][DIM], float b[DIM], std::complex<float> out[DIM]) {
     // dot product of vector and matrix A*B
     for (int ia = 0; ia < DIM; ++ia)
         for (int ib = 0; ib < DIM; ++ib) {
@@ -19,15 +19,17 @@ int main(void)
 
     int i,j, err;
 
-    float matOp1[DIM][DIM];
+    static din_t matOp1[DIM][DIM];
     float matOp2[DIM];
-    float matMult_sw[DIM];
-    float matMult_hw[DIM];
+    static din_t matMult_sw[DIM];
+    static din_t matMult_hw[DIM];
 
     /** Matrix Initiation */
-    for(i = 0; i<DIM; i++)
-        for(j = 0; j<DIM; j++)
-            matOp1[i][j] = (float)(i+j);
+    for(i = 0; i<DIM; i++){
+        for(j = 0; j<DIM; j++){
+            matOp1[i][j] = {i*1.0f,j*i*0.33f};
+        }
+    }
 
     for(i = 0; i<DIM; i++)
         matOp2[i] = (float)(i);
@@ -36,7 +38,7 @@ int main(void)
 
     // Streams creation
     hls::stream<din_t> in("in");
-    hls::stream<din_t> in2("in2");
+    hls::stream<din2_t> in2("in2");
     hls::stream<data_struct<dout_t>> out("out");
 
     for(i = 0; i<DIM; i++)
@@ -62,7 +64,8 @@ int main(void)
         if (matMult_sw[i] != matMult_hw[i]){
             err++;
         }else{
-            std::cout << matMult_hw[i]  << std::endl;
+//            std::cout << matMult_hw[i]  << std::endl;
+//            std::cout << matOp1[i][i] <<std::endl;
         }
     if (err == 0)
         printf("Matrixes identical ... Test successful!\r\n");
