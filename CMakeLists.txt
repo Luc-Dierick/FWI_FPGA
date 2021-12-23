@@ -5,10 +5,10 @@ set(CMAKE_CXX_STANDARD 20)
 
 
 set(PROJECT_HEADERS
-        dotProduct.h
+        updateDirection.h
         )
 set(PROJECT_SOURCES
-        dotProduct.cpp
+        updateDirection.cpp
         )
 
 add_executable(FWI ${PROJECT_SOURCES} ${PROJECT_HEADERS})

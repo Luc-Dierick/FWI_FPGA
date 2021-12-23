@@ -68,28 +68,28 @@ include CMakeFiles/FWI.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/FWI.dir/flags.make
 
-CMakeFiles/FWI.dir/dotProduct.cpp.obj: CMakeFiles/FWI.dir/flags.make
-CMakeFiles/FWI.dir/dotProduct.cpp.obj: ../dotProduct.cpp
-CMakeFiles/FWI.dir/dotProduct.cpp.obj: CMakeFiles/FWI.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Luc\CLionProjects\FWI\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FWI.dir/dotProduct.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FWI.dir/dotProduct.cpp.obj -MF CMakeFiles\FWI.dir\dotProduct.cpp.obj.d -o CMakeFiles\FWI.dir\dotProduct.cpp.obj -c C:\Users\Luc\CLionProjects\FWI\dotProduct.cpp
+CMakeFiles/FWI.dir/updateDirection.cpp.obj: CMakeFiles/FWI.dir/flags.make
+CMakeFiles/FWI.dir/updateDirection.cpp.obj: ../updateDirection.cpp
+CMakeFiles/FWI.dir/updateDirection.cpp.obj: CMakeFiles/FWI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Luc\CLionProjects\FWI\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FWI.dir/updateDirection.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FWI.dir/updateDirection.cpp.obj -MF CMakeFiles\FWI.dir\updateDirection.cpp.obj.d -o CMakeFiles\FWI.dir\updateDirection.cpp.obj -c C:\Users\Luc\CLionProjects\FWI\updateDirection.cpp
 
-CMakeFiles/FWI.dir/dotProduct.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FWI.dir/dotProduct.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Luc\CLionProjects\FWI\dotProduct.cpp > CMakeFiles\FWI.dir\dotProduct.cpp.i
+CMakeFiles/FWI.dir/updateDirection.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FWI.dir/updateDirection.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Luc\CLionProjects\FWI\updateDirection.cpp > CMakeFiles\FWI.dir\updateDirection.cpp.i
 
-CMakeFiles/FWI.dir/dotProduct.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FWI.dir/dotProduct.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Luc\CLionProjects\FWI\dotProduct.cpp -o CMakeFiles\FWI.dir\dotProduct.cpp.s
+CMakeFiles/FWI.dir/updateDirection.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FWI.dir/updateDirection.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Luc\CLionProjects\FWI\updateDirection.cpp -o CMakeFiles\FWI.dir\updateDirection.cpp.s
 
 # Object files for target FWI
 FWI_OBJECTS = \
-"CMakeFiles/FWI.dir/dotProduct.cpp.obj"
+"CMakeFiles/FWI.dir/updateDirection.cpp.obj"
 
 # External object files for target FWI
 FWI_EXTERNAL_OBJECTS =
 
-FWI.exe: CMakeFiles/FWI.dir/dotProduct.cpp.obj
+FWI.exe: CMakeFiles/FWI.dir/updateDirection.cpp.obj
 FWI.exe: CMakeFiles/FWI.dir/build.make
 FWI.exe: CMakeFiles/FWI.dir/linklibs.rsp
 FWI.exe: CMakeFiles/FWI.dir/objects1.rsp

@@ -128,29 +128,29 @@ FWI/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\FWI.dir\build.make CMakeFiles/FWI.dir/build
 .PHONY : FWI/fast
 
-dotProduct.obj: dotProduct.cpp.obj
-.PHONY : dotProduct.obj
+updateDirection.obj: updateDirection.cpp.obj
+.PHONY : updateDirection.obj
 
 # target to build an object file
-dotProduct.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FWI.dir\build.make CMakeFiles/FWI.dir/dotProduct.cpp.obj
-.PHONY : dotProduct.cpp.obj
+updateDirection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FWI.dir\build.make CMakeFiles/FWI.dir/updateDirection.cpp.obj
+.PHONY : updateDirection.cpp.obj
 
-dotProduct.i: dotProduct.cpp.i
-.PHONY : dotProduct.i
+updateDirection.i: updateDirection.cpp.i
+.PHONY : updateDirection.i
 
 # target to preprocess a source file
-dotProduct.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FWI.dir\build.make CMakeFiles/FWI.dir/dotProduct.cpp.i
-.PHONY : dotProduct.cpp.i
+updateDirection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FWI.dir\build.make CMakeFiles/FWI.dir/updateDirection.cpp.i
+.PHONY : updateDirection.cpp.i
 
-dotProduct.s: dotProduct.cpp.s
-.PHONY : dotProduct.s
+updateDirection.s: updateDirection.cpp.s
+.PHONY : updateDirection.s
 
 # target to generate assembly for a file
-dotProduct.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FWI.dir\build.make CMakeFiles/FWI.dir/dotProduct.cpp.s
-.PHONY : dotProduct.cpp.s
+updateDirection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\FWI.dir\build.make CMakeFiles/FWI.dir/updateDirection.cpp.s
+.PHONY : updateDirection.cpp.s
 
 # Help Target
 help:
@@ -161,9 +161,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... FWI
-	@echo ... dotProduct.obj
-	@echo ... dotProduct.i
-	@echo ... dotProduct.s
+	@echo ... updateDirection.obj
+	@echo ... updateDirection.i
+	@echo ... updateDirection.s
 .PHONY : help
 
 

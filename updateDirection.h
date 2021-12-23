@@ -1,5 +1,5 @@
-#ifndef DOTPRODUCT_H
-#define DOTPRODUCT_H
+#ifndef UPDATE_DIRECTION_H
+#define UPDATE_DIRECTION_H
 
 #include <hls_stream.h>
 #include <ap_fixed.h>
@@ -10,9 +10,15 @@
 
 #define DIM 84
 
-typedef std::complex<float> din_t;
-typedef float din2_t;
-typedef std::complex<float> dout_t;
+#define ROW DIM
+#define COL DIM
+
+#define FREQ 17
+#define RECV 17
+#define SRC 15
+
+typedef std::complex<float> complex_float;
+typedef float float_t;
 
 template<typename T>
 class data_struct{

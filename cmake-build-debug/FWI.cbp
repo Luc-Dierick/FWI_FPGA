@@ -80,10 +80,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/Luc/CLionProjects/FWI/dotProduct.cpp">
+		<Unit filename="C:/Users/Luc/CLionProjects/FWI/updateDirection.cpp">
 			<Option target="FWI"/>
 		</Unit>
-		<Unit filename="C:/Users/Luc/CLionProjects/FWI/dotProduct.h">
+		<Unit filename="C:/Users/Luc/CLionProjects/FWI/updateDirection.h">
 			<Option target="FWI"/>
 		</Unit>
 		<Unit filename="C:/Users/Luc/CLionProjects/FWI/CMakeLists.txt">
