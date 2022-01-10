@@ -1,9 +1,9 @@
 #include "updateDirection.h"
 
-void updateDirection(hls::stream<complex_float> &resV, hls::stream<complex_float> &kappa, hls::stream<data_struct<complex_float> > &s_out) {
-#pragma HLS INTERFACE axis port=resV
-#pragma HLS INTERFACE axis port=kappa
-#pragma HLS INTERFACE axis port=s_out
+void updateDirection(hls::stream<complex_float> &update_input, hls::stream<complex_float> &update_kappa, hls::stream<data_struct<complex_float> > &update_output) {
+#pragma HLS INTERFACE axis port=update_input
+#pragma HLS INTERFACE axis port=update_kappa
+#pragma HLS INTERFACE axis port=update_output
 #pragma HLS INTERFACE ap_ctrl_none port=return
 
     static complex_float a[ROW];
@@ -18,14 +18,14 @@ void updateDirection(hls::stream<complex_float> &resV, hls::stream<complex_float
     for (int i = 0; i < ROW; i++)
         for (int j = 0; j < COL; j++) {
 #pragma HLS PIPELINE II=1
-            b[i][j] = kappa.read();
+            b[i][j] = update_kappa.read();
 
         }
 
     // stream in the vector
     for (int i = 0; i < ROW; i++){
 #pragma HLS PIPELINE II=1
-        a[i] = resV.read();
+        a[i] = update_input.read();
     }
 
 
@@ -50,7 +50,7 @@ void updateDirection(hls::stream<complex_float> &resV, hls::stream<complex_float
         out_data.data = c[i][j];
         out_data.last = (i == (ROW - 1) && j == (COL-1)) ? 1 : 0;
         c[i][j] = 0;
-        s_out.write(out_data);
+        update_output.write(out_data);
     	}
 
     }
