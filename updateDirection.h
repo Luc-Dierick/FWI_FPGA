@@ -8,14 +8,8 @@
 #include <stdlib.h>
 #include <complex>
 
-#define DIM 84
-
-#define ROW DIM
-#define COL DIM
-
-#define FREQ 17
-#define RECV 17
-#define SRC 15
+#define ROW 125
+#define COL 100
 
 typedef std::complex<float> complex_float;
 typedef float float_t;
@@ -26,6 +20,5 @@ public:
     T data;
     ap_uint<1> last;
 };
-
 
 #endif
