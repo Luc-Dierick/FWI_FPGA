@@ -33,15 +33,15 @@ void updateDirection(hls::stream<complex_float> &resVector, hls::stream<complex_
 //}
 
 
-void updateDirection_sw(std::complex<float> residualVector[ROW], std::complex<float> kappa[ROW][COL], std::complex<float> kappaTimesResidual[ROW][COL]) {
+void updateDirection_sw(std::complex<float> residualVector[ROW], std::complex<float> kappa[ROW][COL], std::complex<float> kappaTimesResidual[COL]) {
 
 	std::complex<float> conj;
 
 		for(int row = 0; row < ROW; ++row){
 			for(int col = 0; col < COL; ++col){
-			  conj.real(kappa[row][col].real() * residualVector[col].real() + kappa[row][col].imag() * residualVector[col].imag());
-			  conj.imag(-kappa[row][col].real() * residualVector[col].imag() - kappa[row][col].imag() * residualVector[col].real());
-			  kappaTimesResidual[row][col] += conj;
+			  conj.real(kappa[row][col].real() * residualVector[row].real() + kappa[row][col].imag() * residualVector[row].imag());
+			  conj.imag(-kappa[row][col].real() * residualVector[row].imag() - kappa[row][col].imag() * residualVector[row].real());
+			  kappaTimesResidual[col] += conj;
 		}
 
 	}
@@ -54,10 +54,10 @@ int main(void)
 
     int i,j, err;
 
-    static complex_float resVect[COL];
+    static complex_float resVect[ROW];
     static complex_float kappa[ROW][COL];
-    static complex_float kappaTimesResSW[ROW][COL];
-    static complex_float kappaTimesResHW[ROW][COL];
+    static complex_float kappaTimesResSW[COL];
+    static complex_float kappaTimesResHW[COL];
 
 
     /** Input Initiation */
@@ -81,16 +81,15 @@ int main(void)
         for(j = 0; j<COL; j++)
             kappaIn.write(kappa[i][j]);
 
-    for(i = 0; i<COL; i++)
+    for(i = 0; i<ROW; i++)
         resVectIn.write(resVect[i]);
 
     /* HW Matrix Multiplication */
     updateDirection(resVectIn, kappaIn, kappaTimesResOut);
 
     // Write Output
-    for(i = 0; i<ROW; i++)
     	for(j = 0; j < COL; j++)
-        kappaTimesResHW[i][j] = kappaTimesResOut.read().data;
+        kappaTimesResHW[j] = kappaTimesResOut.read().data;
 
     /* reference Matrix Multiplication */
 //    auto begin = std::chrono::high_resolution_clock::now();
@@ -107,15 +106,15 @@ int main(void)
     err = 0;
     for (i = 0; i<ROW; i++){
     	for(int j = 0; j < COL; j++){
-			if (kappaTimesResSW[i][j] != kappaTimesResHW[i][j]){
+			if (kappaTimesResSW[j] != kappaTimesResHW[j]){
 				err++;
-				std::cout << kappaTimesResSW[i][j] << " HW: " << kappaTimesResHW[i][j] <<std::endl;
+				std::cout << kappaTimesResSW[j] << " HW: " << kappaTimesResHW[j] <<std::endl;
 			}else{
 
 			}
     	}
     }
-                std::cout << kappaTimesResHW[3][3] <<std::endl;
+                std::cout << kappaTimesResHW[3] <<std::endl;
     if (err == 0)
         printf("Matrixes identical ... Test successful!\r\n");
     else
