@@ -8,12 +8,12 @@
 #include <stdlib.h>
 #include <complex>
 
-#define DIM 84
-#define SIZE (DIM * DIM)
+#define ROW 125
+#define COL 100
 
 
-typedef std::complex<float> din_t;
-typedef float din2_t;
+typedef std::complex<float> complex_float;
+typedef float reg_float;
 typedef std::complex<float> dout_t;
 
 template<typename T>
