@@ -9,7 +9,7 @@ void dotprod(hls::stream<complex_float> &dotprod_in_matrix, hls::stream<reg_floa
 
     static complex_float a[ROW][COL];
     float b[COL];
-    static complex_float c[COL];
+    static complex_float c[ROW];
 
     int const FACTOR = COL/4;
 #pragma HLS array_partition variable=a block factor=FACTOR dim=2
@@ -31,22 +31,22 @@ void dotprod(hls::stream<complex_float> &dotprod_in_matrix, hls::stream<reg_floa
 
     // dot product of matrix A and vector B
     std::complex<float> sum = 0;
+	L1:for (int row = 0; row < ROW; ++row){
     L2:for (int col = 0; col < COL; ++col){
-    	L1:for (int row = 0; row < ROW; ++row){
 		#pragma HLS PIPELINE II=4
     		sum += a[row][col] * b[col];
     	}
-    	c[col] = sum;
+    	c[row] = sum;
     	sum = 0;
     }
     // stream out result matrix
     data_struct<dout_t> out_data;
 
-    for (int i = 0; i < COL; i++)
+    for (int i = 0; i < ROW; i++)
     {
 #pragma HLS PIPELINE II=1
         out_data.data = c[i];
-        out_data.last = (i == (COL - 1)) ? 1 : 0;
+        out_data.last = (i == (ROW - 1)) ? 1 : 0;
 
         dotprod_out.write(out_data);
     }

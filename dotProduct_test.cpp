@@ -6,7 +6,7 @@ void mmult_sw(std::complex<float> a[ROW][COL], float b[COL], std::complex<float>
     // dot product of vector and matrix A*B
 	for (int col = 0; col < COL; ++col){
 		for (int row = 0; row < ROW; ++row){
-            out[col] += a[row][col] * b[col];
+            out[row] += a[row][col] * b[col];
         }
 	}
 }
@@ -20,8 +20,8 @@ int main(void)
 
     static complex_float matOp1[ROW][COL];
     float matOp2[COL];
-    static complex_float matMult_sw[COL];
-    static complex_float matMult_hw[COL];
+    static complex_float matMult_sw[ROW];
+    static complex_float matMult_hw[ROW];
 
     /** Matrix Initiation */
     for(i = 0; i<ROW; i++){
@@ -51,7 +51,7 @@ int main(void)
     dotprod(in, in2, out);
 
     // Write Output
-    for(i = 0; i<COL; i++)
+    for(i = 0; i<ROW; i++)
         matMult_hw[i] = out.read().data;
 
     /* reference Matrix Multiplication */
@@ -59,7 +59,7 @@ int main(void)
 
     /** Matrix comparison */
     err = 0;
-    for (i = 0; (i<COL && !err); i++)
+    for (i = 0; (i<ROW && !err); i++)
         if (matMult_sw[i] != matMult_hw[i]){
             err++;
         }else{
