@@ -8,9 +8,8 @@
 #include <stdlib.h>
 #include <complex>
 
-#define ROW 125
-#define COL 100
-
+#define ROW 100
+#define COL 200
 
 typedef std::complex<float> complex_float;
 typedef float reg_float;
