@@ -1,36 +1,9 @@
 
-#include "updateDirection.h"
+#include "CostFunction.h"
 //#include <chrono>
 //#include <Windows.h>
 
 void updateDirection(hls::stream<complex_float> &resVector, hls::stream<complex_float> &kappa, hls::stream<data_struct<complex_float> > &kappaTimesRes);
-
-//
-//double get_wall_time(){
-//    LARGE_INTEGER time,freq;
-//    if (!QueryPerformanceFrequency(&freq)){
-//        //  Handle error
-//        return 0;
-//    }
-//    if (!QueryPerformanceCounter(&time)){
-//        //  Handle error
-//        return 0;
-//    }
-//    return (double)time.QuadPart / freq.QuadPart;
-//}
-//double get_cpu_time(){
-//    FILETIME a,b,c,d;
-//    if (GetProcessTimes(GetCurrentProcess(),&a,&b,&c,&d) != 0){
-//        //  Returns total user time.
-//        //  Can be tweaked to include kernel times as well.
-//        return
-//            (double)(d.dwLowDateTime |
-//            ((unsigned long long)d.dwHighDateTime << 32)) * 0.0000001;
-//    }else{
-//        //  Handle error
-//        return 0;
-//    }
-//}
 
 
 void updateDirection_sw(std::complex<float> residualVector[ROW], std::complex<float> kappa[ROW][COL], std::complex<float> kappaTimesResidual[COL]) {
@@ -78,42 +51,30 @@ int main(void)
     hls::stream<data_struct<complex_float>> kappaTimesResOut("out");
 
     for(i = 0; i<ROW; i++)
-        for(j = 0; j<COL; j++)
-            kappaIn.write(kappa[i][j]);
+            resVectIn.write(resVect[i]);
 
     for(i = 0; i<ROW; i++)
-        resVectIn.write(resVect[i]);
+        for(j = 0; j<COL; j++)
+            kappaIn.write(kappa[i][j]);
 
     /* HW Matrix Multiplication */
     updateDirection(resVectIn, kappaIn, kappaTimesResOut);
 
     // Write Output
-    	for(j = 0; j < COL; j++)
+    for(j = 0; j < COL; j++)
         kappaTimesResHW[j] = kappaTimesResOut.read().data;
 
-    /* reference Matrix Multiplication */
-//    auto begin = std::chrono::high_resolution_clock::now();
-//    double wall0 = get_wall_time();
     updateDirection_sw(resVect, kappa, kappaTimesResSW);
-//    double wall1 = get_wall_time();
-//
-//    auto end = std::chrono::high_resolution_clock::now();
-//    printf("Time measured: %.7f wall sec.\n", wall1-wall0);
-//    auto elapsed =  std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-//    printf("Time measured: %.7f seconds.\n", elapsed.count() * 1e-9);
 
     /** Matrix comparison */
     err = 0;
-    for (i = 0; i<ROW; i++){
     	for(int j = 0; j < COL; j++){
 			if (kappaTimesResSW[j] != kappaTimesResHW[j]){
 				err++;
 				std::cout << kappaTimesResSW[j] << " HW: " << kappaTimesResHW[j] <<std::endl;
-			}else{
-
 			}
     	}
-    }
+
                 std::cout << kappaTimesResHW[3] <<std::endl;
     if (err == 0)
         printf("Matrixes identical ... Test successful!\r\n");

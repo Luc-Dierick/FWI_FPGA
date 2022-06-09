@@ -10,8 +10,8 @@
 
 #define ROW 300
 #define COL 100
-#define LOW 270
-#define HIGH 30
+#define LOW 250
+#define HIGH 50
 
 typedef std::complex<float> complex_float;
 typedef float float_t;
