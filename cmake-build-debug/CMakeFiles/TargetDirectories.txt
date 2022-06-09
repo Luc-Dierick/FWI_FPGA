@@ -1,3 +1,0 @@
-C:/Users/Luc/CLionProjects/FWI/cmake-build-debug/CMakeFiles/FWI.dir
-C:/Users/Luc/CLionProjects/FWI/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Luc/CLionProjects/FWI/cmake-build-debug/CMakeFiles/rebuild_cache.dir
