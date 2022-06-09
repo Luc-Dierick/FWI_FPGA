@@ -4,11 +4,11 @@ void ForwardFunction(hls::stream<complex_float> &in, hls::stream<reg_float> &in2
 
 void mmult_sw(std::complex<float> a[ROW][COL], float b[COL], std::complex<float> out[COL]) {
     // dot product of vector and matrix A*B
-	for (int col = 0; col < COL; ++col){
-		for (int row = 0; row < ROW; ++row){
+    for (int col = 0; col < COL; ++col){
+        for (int row = 0; row < ROW; ++row){
             out[col] += a[row][col] * b[col];
         }
-	}
+    }
 }
 
 int main(void)
@@ -43,14 +43,14 @@ int main(void)
 
 
     for(j = 0; j<COL; j++)
-    	in2.write(matOp2[j]);
+        in2.write(matOp2[j]);
 
     for(i = 0; i<ROW; i++){
         for(j = 0; j<COL; j++){
-        	in.write(matOp1[i][j]);
-    }
+            in.write(matOp1[i][j]);
+        }
 
-}
+    }
 
     ForwardFunction(in,in2,out);
 

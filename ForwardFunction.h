@@ -1,5 +1,5 @@
-#ifndef FORWARD_FUNCTION_H
-#define FORWARD_FUNCTION_H
+#ifndef DOTPRODUCT_H
+#define DOTPRODUCT_H
 
 #include <hls_stream.h>
 #include <ap_fixed.h>
@@ -18,7 +18,7 @@ typedef float reg_float;
 typedef std::complex<float> dout_t;
 
 template<typename T>
-class data_struct {
+class data_struct{
 public:
     T data;
     ap_uint<1> last;
