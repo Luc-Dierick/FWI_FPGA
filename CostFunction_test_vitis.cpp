@@ -1,5 +1,5 @@
 
-#include "updateDirection.h"
+#include "CostFunction_vitis.h"
 
 void updateDirection(hls::stream<complex_float> &resVector, hls::stream<complex_float> &kappa, hls::stream<complex_float> &kappaTimesRes);
 
@@ -67,7 +67,6 @@ int main(void)
 
     /** Matrix comparison */
     err = 0;
-    for (i = 0; i<ROW; i++){
         for(int j = 0; j < COL; j++){
             if (kappaTimesResSW[j].data != kappaTimesResHW[j].data){
                 err++;
@@ -76,13 +75,14 @@ int main(void)
 
             }
         }
-    }
+
     std::cout << kappaTimesResHW[3].data <<std::endl;
     if (err == 0)
         printf("Matrixes identical ... Test successful!\r\n");
     else
         printf("Test failed! error: %d\r\n",err);
 
+   std::cout << kappaTimesResHW[7].data <<std::endl;
     return err;
 
 }

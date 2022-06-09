@@ -1,5 +1,5 @@
-#ifndef COST_FUNCTION_H
-#define COST_FUNCTION_H
+#ifndef DOTPRODUCT_H
+#define DOTPRODUCT_H
 
 #include <hls_stream.h>
 #include <ap_fixed.h>
@@ -10,11 +10,12 @@
 
 #define ROW 300
 #define COL 100
-#define LOW 250
-#define HIGH 50
+#define LOW 200
+#define HIGH 100
 
 typedef std::complex<float> complex_float;
-typedef float float_t;
+typedef float reg_float;
+typedef std::complex<float> dout_t;
 
 template<typename T>
 class data_struct{
@@ -22,5 +23,6 @@ public:
     T data;
     ap_uint<1> last;
 };
+
 
 #endif

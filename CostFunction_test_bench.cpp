@@ -1,12 +1,11 @@
 
 #include "CostFunction.h"
-//#include <chrono>
-//#include <Windows.h>
-
-void updateDirection(hls::stream<complex_float> &resVector, hls::stream<complex_float> &kappa, hls::stream<data_struct<complex_float> > &kappaTimesRes);
 
 
-void updateDirection_sw(std::complex<float> residualVector[ROW], std::complex<float> kappa[ROW][COL], std::complex<float> kappaTimesResidual[COL]) {
+void CostFunction(hls::stream<complex_float> &resVector, hls::stream<complex_float> &kappa, hls::stream<data_struct<complex_float> > &kappaTimesRes);
+
+
+void CostFunction_sw(std::complex<float> residualVector[ROW], std::complex<float> kappa[ROW][COL], std::complex<float> kappaTimesResidual[COL]) {
 
 	std::complex<float> conj;
 
@@ -58,13 +57,13 @@ int main(void)
             kappaIn.write(kappa[i][j]);
 
     /* HW Matrix Multiplication */
-    updateDirection(resVectIn, kappaIn, kappaTimesResOut);
+    CostFunction(resVectIn, kappaIn, kappaTimesResOut);
 
     // Write Output
     for(j = 0; j < COL; j++)
         kappaTimesResHW[j] = kappaTimesResOut.read().data;
 
-    updateDirection_sw(resVect, kappa, kappaTimesResSW);
+    CostFunction_sw(resVect, kappa, kappaTimesResSW);
 
     /** Matrix comparison */
     err = 0;
